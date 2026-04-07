@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="594mm"
+   height="420mm"
+   viewBox="0 0 594 420"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   sodipodi:docname="00_All_Layers_Inkscape.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.54802903"
+     inkscape:cx="707.07933"
+     inkscape:cy="758.17151"
+     inkscape:window-width="2880"
+     inkscape:window-height="1562"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <rect
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.264314;stroke-opacity:1"
+       id="rect1"
+       width="482.73569"
+       height="177.53569"
+       x="50.132156"
+       y="50.132156"
+       inkscape:label="Frontplate outline" />
+    <g
+       id="g14"
+       style="display:inline"
+       inkscape:label="Frontplate mounting holes">
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.273528;stroke-dasharray:none;stroke-opacity:1"
+         id="rect13"
+         width="11.209894"
+         height="6.5614181"
+         x="520.05493"
+         y="84.830315"
+         ry="3.280709" />
+      <rect
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.273528;stroke-dasharray:none;stroke-opacity:1"
+         id="rect13-8"
+         width="11.209894"
+         height="6.5614181"
+         x="51.719051"
+         y="84.812965"
+         ry="3.280709" />
+      <rect
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.273528;stroke-dasharray:none;stroke-opacity:1"
+         id="rect13-3"
+         width="11.209894"
+         height="6.5614181"
+         x="51.425602"
+         y="186.39592"
+         ry="3.280709" />
+      <rect
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.273528;stroke-dasharray:none;stroke-opacity:1"
+         id="rect13-4"
+         width="11.209894"
+         height="6.5614181"
+         x="519.97748"
+         y="186.29086"
+         ry="3.280709" />
+    </g>
+    <rect
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.240543;stroke-opacity:1"
+       id="rect2"
+       width="399.75946"
+       height="177.55946"
+       x="91.62027"
+       y="50.12027"
+       inkscape:label="Case body outline" />
+    <rect
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.193532;stroke-linecap:butt;stroke-opacity:1"
+       id="rect3"
+       width="322.27731"
+       height="142.57219"
+       x="101.59676"
+       y="67.496765"
+       inkscape:label="DSI Screen outline"
+       ry="5.132998" />
+    <rect
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.20002;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4"
+       width="41.533863"
+       height="39.9632"
+       x="50.107376"
+       y="118.91841"
+       inkscape:label="Frontplate recess left" />
+    <rect
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.199926;stroke-dasharray:none;stroke-opacity:1"
+       id="rect5"
+       width="98.801231"
+       height="39.943333"
+       x="434.09735"
+       y="118.92834"
+       inkscape:label="Frontplate recess right" />
+    <rect
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.130966;stroke-dasharray:none;stroke-opacity:1"
+       id="rect5-8"
+       width="42.324448"
+       height="40.012291"
+       x="434.01169"
+       y="118.92684"
+       inkscape:label="PWR button cutout" />
+    <circle
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.226906;stroke-linecap:butt;stroke-opacity:1"
+       id="path5"
+       cx="463"
+       cy="138.89999"
+       r="9.3865471"
+       inkscape:label="PWR button inner diameter" />
+    <rect
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+       id="rect6"
+       width="262.25006"
+       height="81.978081"
+       x="131.61037"
+       y="97.510384"
+       inkscape:label="DSI Screen mounting cutout"
+       ry="0" />
+    <rect
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.174774;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+       id="rect7"
+       width="200.20766"
+       height="82.003304"
+       x="193.66537"
+       y="97.497765"
+       inkscape:label="DSI Screen mounting cutout reduced"
+       ry="0" />
+    <rect
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.210924;stroke-opacity:1"
+       id="rect8"
+       width="369.78906"
+       height="147.58908"
+       x="106.60546"
+       y="65.105461"
+       inkscape:label="Case volume chamber full" />
+    <rect
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+       id="rect9"
+       width="177.43678"
+       height="147.65385"
+       x="106.57308"
+       y="65.073074"
+       inkscape:label="Case volume chamber half 1" />
+    <rect
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.200088;stroke-dasharray:none;stroke-opacity:1"
+       id="rect10"
+       width="177.31142"
+       height="147.65388"
+       x="299.07303"
+       y="65.073059"
+       inkscape:label="Case volume chamber half 2" />
+    <rect
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.240543;stroke-opacity:1"
+       id="rect11"
+       width="399.75946"
+       height="177.55946"
+       x="91.62027"
+       y="50.12027"
+       inkscape:label="Backplate outline" />
+    <g
+       id="g12"
+       inkscape:label="Sub-D PowerCon"
+       transform="translate(-1.3461837,-0.25641594)"
+       style="display:inline">
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12"
+         cx="139.20767"
+         cy="177.83223"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D top screwhole" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.181656;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path11"
+         cx="129.75421"
+         cy="189.67567"
+         rx="11.709171"
+         ry="11.709172"
+         inkscape:label="Sub-D cutout" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12-8"
+         cx="120.34563"
+         cy="201.57826"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D bottom screwhole" />
+    </g>
+    <g
+       id="g12-2"
+       inkscape:label="Sub-D Ethernet"
+       transform="translate(32.413539,-0.23122001)"
+       style="display:inline">
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12-1"
+         cx="139.20767"
+         cy="177.83223"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D top screwhole" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.181656;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path11-6"
+         cx="129.75421"
+         cy="189.67567"
+         rx="11.709171"
+         ry="11.709172"
+         inkscape:label="Sub-D cutout" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12-8-8"
+         cx="120.34563"
+         cy="201.57826"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D bottom screwhole" />
+    </g>
+    <g
+       id="g12-2-0"
+       inkscape:label="Sub-D USB 2"
+       transform="translate(66.186292,-0.24259687)"
+       style="display:inline">
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12-1-4"
+         cx="139.20767"
+         cy="177.83223"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D top screwhole" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.181656;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path11-6-9"
+         cx="129.75421"
+         cy="189.67567"
+         rx="11.709171"
+         ry="11.709172"
+         inkscape:label="Sub-D cutout" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12-8-8-9"
+         cx="120.34563"
+         cy="201.57826"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D bottom screwhole" />
+    </g>
+    <g
+       id="g12-2-9"
+       inkscape:label="Sub-D USB 1"
+       transform="translate(99.942561,-0.23183123)"
+       style="display:inline">
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12-1-0"
+         cx="139.20767"
+         cy="177.83223"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D top screwhole" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.181656;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path11-6-8"
+         cx="129.75421"
+         cy="189.67567"
+         rx="11.709171"
+         ry="11.709172"
+         inkscape:label="Sub-D cutout" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12-8-8-8"
+         cx="120.34563"
+         cy="201.57826"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D bottom screwhole" />
+    </g>
+    <g
+       id="g13"
+       style="display:inline"
+       inkscape:label="DSI Screen mounting holes">
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13"
+         cx="122.89146"
+         cy="88.501831"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-8"
+         cx="212.83357"
+         cy="88.507828"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-2"
+         cx="312.59564"
+         cy="88.513298"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-85"
+         cx="312.61188"
+         cy="188.4222"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-6"
+         cx="212.83069"
+         cy="188.41177"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-22"
+         cx="122.90577"
+         cy="188.41252"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-21"
+         cx="402.53433"
+         cy="88.522339"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87"
+         cx="402.52194"
+         cy="188.43169"
+         rx="1.211386"
+         ry="1.2113858" />
+    </g>
+  </g>
+</svg>
