@@ -1,0 +1,17 @@
+# No window tile frames, but a little gap
+default_border none
+default_floating_border none
+gaps inner 3
+gaps outer 3
+
+# Output setup
+output DSI-2 transform 270
+
+# Launch apps side by side on startup
+exec ~/.config/sway/launchAndLayout.sh
+
+# Force all windows to tile horizontally
+default_orientation horizontal
+
+# Kiosk hardening (optional)
+bindsym --inhibited Control+q exit  # or remove all keybinds

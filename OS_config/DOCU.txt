@@ -1,0 +1,125 @@
+###########################
+Raspberry Pi OS setup
+###########################
+Linux RaspberryPi123DSI 6.12.62+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.12.62-1+rpt1 (2025-12-18) aarch64
+
+.bash_login
+  # Start tmux on login
+  if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+      tmux new-session -d -s main \; \
+          split-window -h \; \
+          Split-window -v -t main:0.0 \; \
+          send-keys -t main:0.0 'sway' Enter \; \
+          send-keys -t main:0.1 'Mema --headless' Enter \; \
+          send-keys -t main:0.2 'btop' Enter \; \
+          attach-session -t main
+  fi
+
+/boot/firmware/config.txt
+  [all]
+  dtoverlay=vc4-kms-v3d
+  #DSI1 Use
+  dtoverlay=vc4-kms-dsi-waveshare-panel-v2,12_3_inch_a_4lane
+
+/boot/firmware/cmdline.txt
+  console=serial0,115200 console=tty1 root=PARTUUID=ff12f123-02 rootfstype=ext4 fsck.repair=yes rootwait quiet splash plymouth.ignore-serial-consoles cfg80211.ieee80211_regdom=D fbcon=rotate:3
+
+.config/kanshi/config
+  profile {
+                  output DSI-2 enable scale 1.000000 mode 720x1920@62.976 position 0,0 transform 90
+  }
+
+
+Link local:
+sudo nmcli con mod "Wired connection 1" \
+  ipv4.link-local enabled
+
+
+No .xsession
+
+.config/sway/config
+  # No window tile frames, but a little gap
+  default_border none
+  default_floating_border none
+  gaps inner 3
+  gaps outer 3
+
+  # Output setup
+  output DSI-2 transform 270
+
+  # Launch apps side by side on startup
+  exec ~/.config/sway/launchAndLayout.sh
+
+  # Force all windows to tile horizontally
+  default_orientation horizontal
+
+  # Kiosk hardening (optional)
+  bindsym --inhibited Control+q exit  # or remove all keybinds
+
+.config/sway/launchAndLayout.sh
+  #!/bin/sh
+
+  # Launch apps sequentially, waiting for each to register before starting the next
+  MemaMo &
+  sleep 1
+  Umsci &
+  sleep 1
+  MemaRe &
+  sleep 2
+
+  swaymsg '[class="Mema.Mo"] resize set width 25ppt'
+  swaymsg '[class="Umsci"] resize set width 55ppt'
+  swaymsg '[class="Mema.Re"] resize set width 20ppt'
+
+###########################
+Raspberry Pi OS splashscreen
+###########################
+sudo cp Downloads/dbaudio-soundscape-logo_rot.png /usr/share/plymouth/themes/pix/splash.png
+sudo update-initramfs -u
+
+###########################
+alsa_pcm_inferno
+###########################
+...todo
+
+
+vi /etc/systemd/system/statime.service
+[Unit]
+Description=statime PTP daemon
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/home/christianahrens/Documents/Development/Github/statime/target/debug/statime \
+    -c /home/christianahrens/Documents/Development/Github/statime/inferno-ptpv1.toml
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+
+
+vi Documents/Development/Github/statime/inferno-ptpv1.toml
+loglevel = "trace" # Other values include trace, debug, warn and error
+
+# which ptp network to participate in?
+sdo-id = 0
+domain = 0
+priority1 = 251 # Dante hardware devices use 249 in PTPv2
+virtual-system-clock = true
+virtual-system-clock-base = "monotonic_raw"
+usrvclock-export = false
+
+# Add one of these per network interface in your system
+[[port]]
+interface = "eth0"
+network-mode = "ipv4" #can also be ipv6 or ethernet
+
+# hardware-clock = auto | required | none | index (default: auto)
+hardware-clock = "auto"
+
+protocol-version = "PTPv1"
+
+
+(sudo Mema --headless) 

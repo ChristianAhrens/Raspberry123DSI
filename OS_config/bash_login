@@ -1,0 +1,11 @@
+# Start tmux on login
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  tmux new-session -d -s main \; \
+    split-window -h \; \
+    split-window -v -t main:0.0 \; \
+    send-keys -t main:0.0 'sway' Enter \; \
+    send-keys -t main:0.1 'while true; do Mema --headless --noupdates; echo "[mema] exited with $?, restarting in 3s..."; sleep 3; done' Enter \; \
+    send-keys -t main:0.2 'btop' Enter \; \
+    attach-session -t main
+fi
+. "$HOME/.cargo/env"
