@@ -23,15 +23,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="0.71587143"
-     inkscape:cx="940.8114"
-     inkscape:cy="414.18052"
+     inkscape:zoom="0.99743647"
+     inkscape:cx="828.6242"
+     inkscape:cy="410.55246"
      inkscape:window-width="2880"
      inkscape:window-height="1562"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g17" />
+     inkscape:current-layer="g19" />
   <defs
      id="defs1" />
   <g
@@ -93,14 +93,14 @@
        y="50.12027"
        inkscape:label="Case body outline" />
     <rect
-       style="display:inline;fill:none;stroke:#000000;stroke-width:0.193532;stroke-linecap:butt;stroke-opacity:1"
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.193832;stroke-linecap:butt;stroke-opacity:1"
        id="rect3"
-       width="322.27731"
-       height="142.57219"
-       x="101.59676"
-       y="67.496765"
+       width="323.27716"
+       height="142.57188"
+       x="101.09692"
+       y="67.496918"
        inkscape:label="DSI Screen outline"
-       ry="5.132998" />
+       ry="5.132987" />
     <rect
        style="display:inline;fill:none;stroke:#000000;stroke-width:0.20002;stroke-dasharray:none;stroke-opacity:1"
        id="rect4"
@@ -150,6 +150,67 @@
        y="97.497765"
        inkscape:label="DSI Screen mounting cutout reduced"
        ry="0" />
+    <g
+       id="g13"
+       style="display:inline"
+       inkscape:label="DSI Screen mounting holes">
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13"
+         cx="122.89146"
+         cy="88.501831"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-8"
+         cx="212.83357"
+         cy="88.507828"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-2"
+         cx="312.59564"
+         cy="88.513298"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-85"
+         cx="312.61188"
+         cy="188.4222"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-6"
+         cx="212.83069"
+         cy="188.41177"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-22"
+         cx="122.90577"
+         cy="188.41252"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-21"
+         cx="402.53433"
+         cy="88.522339"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87"
+         cx="402.52194"
+         cy="188.43169"
+         rx="1.211386"
+         ry="1.2113858" />
+    </g>
     <rect
        style="display:inline;fill:none;stroke:#000000;stroke-width:0.210924;stroke-opacity:1"
        id="rect8"
@@ -214,7 +275,7 @@
     </g>
     <g
        id="g12-2"
-       inkscape:label="Sub-D Ethernet"
+       inkscape:label="Sub-D USB 1"
        transform="translate(32.413539,-0.23122001)"
        style="display:inline">
       <ellipse
@@ -274,7 +335,7 @@
     </g>
     <g
        id="g12-2-9"
-       inkscape:label="Sub-D USB 1"
+       inkscape:label="Sub-D Ethernet 1"
        transform="translate(99.942561,-0.23183123)"
        style="display:inline">
       <ellipse
@@ -285,14 +346,12 @@
          rx="1.3626764"
          ry="1.3626765"
          inkscape:label="Sub-D top screwhole" />
-      <ellipse
-         style="fill:none;stroke:#000000;stroke-width:0.181656;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
-         id="path11-6-8"
-         cx="129.75421"
-         cy="189.67567"
-         rx="11.709171"
-         ry="11.709172"
-         inkscape:label="Sub-D cutout" />
+      <path
+         id="rect12"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.205341;stroke-dasharray:none"
+         d="m 223.79047,175.62391 v 5.81256 h -2.15955 v 17.79478 h 4.14755 v 1.92185 h 7.83621 v -1.92185 h 4.14755 v -17.79478 h -2.15904 v -5.81256 z"
+         inkscape:label="Ethernet cutout"
+         transform="translate(-99.942561,0.23183123)" />
       <ellipse
          style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
          id="path12-8-8-8"
@@ -303,65 +362,32 @@
          inkscape:label="Sub-D bottom screwhole" />
     </g>
     <g
-       id="g13"
-       style="display:inline"
-       inkscape:label="DSI Screen mounting holes">
+       id="g18"
+       inkscape:label="Sub-D Ethernet 2"
+       transform="translate(133.69883,-0.26140276)"
+       style="display:inline">
       <ellipse
-         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
-         id="path13"
-         cx="122.89146"
-         cy="88.501831"
-         rx="1.211386"
-         ry="1.2113858" />
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="ellipse16"
+         cx="139.20767"
+         cy="177.83223"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D top screwhole" />
+      <path
+         id="path16"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.205341;stroke-dasharray:none"
+         d="m 223.79047,175.62391 v 5.81256 h -2.15955 v 17.79478 h 4.14755 v 1.92185 h 7.83621 v -1.92185 h 4.14755 v -17.79478 h -2.15904 v -5.81256 z"
+         inkscape:label="Ethernet cutout"
+         transform="translate(-99.942561,0.23183123)" />
       <ellipse
-         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
-         id="path13-8"
-         cx="212.83357"
-         cy="88.507828"
-         rx="1.211386"
-         ry="1.2113858" />
-      <ellipse
-         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
-         id="path13-2"
-         cx="312.59564"
-         cy="88.513298"
-         rx="1.211386"
-         ry="1.2113858" />
-      <ellipse
-         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
-         id="path13-85"
-         cx="312.61188"
-         cy="188.4222"
-         rx="1.211386"
-         ry="1.2113858" />
-      <ellipse
-         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
-         id="path13-6"
-         cx="212.83069"
-         cy="188.41177"
-         rx="1.211386"
-         ry="1.2113858" />
-      <ellipse
-         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
-         id="path13-22"
-         cx="122.90577"
-         cy="188.41252"
-         rx="1.211386"
-         ry="1.2113858" />
-      <ellipse
-         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
-         id="path13-21"
-         cx="402.53433"
-         cy="88.522339"
-         rx="1.211386"
-         ry="1.2113858" />
-      <ellipse
-         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
-         id="path13-87"
-         cx="402.52194"
-         cy="188.43169"
-         rx="1.211386"
-         ry="1.2113858" />
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="ellipse17"
+         cx="120.34563"
+         cy="201.57826"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D bottom screwhole" />
     </g>
     <g
        id="g16"
@@ -423,7 +449,8 @@
     </g>
     <g
        id="g17"
-       inkscape:label="Vents">
+       inkscape:label="Vents"
+       style="display:inline">
       <path
          id="rect14"
          style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
@@ -492,7 +519,102 @@
       <path
          id="rect14-585"
          style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
-         d="M 269.57786 65.01722 L 269.57786 112.51303 L 274.39617 112.51303 L 274.39617 65.01722 L 269.57786 65.01722 z M 269.57786 117.44606 L 269.57786 164.94239 L 274.39617 164.94239 L 274.39617 117.44606 L 269.57786 117.44606 z " />
+         d="m 269.57786,65.01722 v 47.49581 h 4.81831 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81831 v -47.49633 z" />
+    </g>
+    <g
+       id="g19"
+       inkscape:label="Backplate holes">
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7"
+         cx="483.97556"
+         cy="57.493874"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-0"
+         cx="483.97556"
+         cy="220.24495"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-9"
+         cx="291.48471"
+         cy="57.493874"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-3"
+         cx="291.48471"
+         cy="220.24495"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-8"
+         cx="98.993866"
+         cy="220.24495"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-1"
+         cx="98.993866"
+         cy="57.493874"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-80"
+         cx="98.993866"
+         cy="138.89999"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-32"
+         cx="483.97556"
+         cy="138.86942"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-13"
+         cx="291.48471"
+         cy="138.86942"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-13-3"
+         cx="387.94284"
+         cy="57.493874"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-13-35"
+         cx="388.10989"
+         cy="220.24495"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-13-5"
+         cx="196.89116"
+         cy="220.24495"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-13-9"
+         cx="195.02658"
+         cy="57.508461"
+         rx="1.211386"
+         ry="1.2113858" />
     </g>
   </g>
 </svg>

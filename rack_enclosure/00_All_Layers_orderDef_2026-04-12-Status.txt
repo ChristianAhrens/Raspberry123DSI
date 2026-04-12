@@ -1,0 +1,11 @@
+1x  01_Designfront_3mm_Inkscape                    |  neu
+1x  02_Front_6mm_Inkscape                          |  neu
+1x  03_DSIScreenBodycutout_3mm_Inkscape            |  neu
+1x  04_DSIScreenMounting_6mm_Inkscape              |  ok
+3x  05_DualVolumeBody_6mm_Inkscape                 |  fehlt
+10x 06_SingleVolumeBody_10mm_Inkscape              |  1x ok
+1x  07_DualVolumeBody_BackplateMount_6mm_Inkscape  |  fehlt
+1x  08_BackplateWFan_6mm_Inkscape                  |  neu
+
+-> Frontblende 3mm + 6mm = 9 mm dick
+-> Gehäuse-Korpus 3mm + 6mm + 3x6mm + 10x10mm + 6mm + 6mm = 139 mm tief
