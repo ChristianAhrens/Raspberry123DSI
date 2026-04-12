@@ -1,0 +1,7 @@
+1x  01_Designfront_3mm_Inkscape
+1x  02_Front_6mm_Inkscape
+1x  03_DSIScreenBodycutout_3mm_Inkscape
+1x  04_DSIScreenMounting_6mm_Inkscape
+4x  05_DualVolumeBody_6mm_Inkscape
+10x 06_SingleVolumeBody_10mm_Inkscape
+1x  07_BackplateWFan_6mm_Inkscape
