@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ALSA/Dante routing, LV2 DSP plugin
+configuration, and audio device setup.">
+  <meta property="og:title" content="Audio Configuration —
+Raspberry123DSI">
+  <meta property="og:description" content="ALSA/Dante routing, LV2 DSP
+plugin configuration, and audio device setup.">
+  <meta property="og:type" content="website">
+  <title>Audio Configuration — Raspberry123DSI</title>
+  <style>
+    :root {
+      --bg:          #0d1117;
+      --surface:     #161b22;
+      --surface-2:   #21262d;
+      --border:      #30363d;
+      --text:        #e6edf3;
+      --text-muted:  #848d97;
+      --accent:      #58a6ff;
+      --accent-dim:  #1f3a5f;
+      --accent-hover:#79b8ff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Navigation ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 17, 23, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-brand img {
+      height: 28px;
+      width: auto;
+      border: none;
+      border-radius: 6px;
+      margin: 0;
+      display: block;
+    }
+
+    .hero-icon {
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-icon img {
+      height: 96px;
+      width: auto;
+      border: none;
+      border-radius: 16px;
+      margin: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-links .btn-docs {
+      color: var(--accent);
+      border: 1px solid var(--accent-dim);
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .nav-links .btn-docs:hover {
+      background: var(--accent-dim);
+      color: var(--text);
+    }
+
+    /* ── Main content ── */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 5rem;
+    }
+
+    /* ── Headings ── */
+    h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, var(--text) 55%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-top: 3.25rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      margin-top: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── Body text ── */
+    p { margin-bottom: 1rem; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    strong { color: var(--text); font-weight: 600; }
+
+    /* ── CTA button row ── */
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .cta p { margin: 0; }
+
+    .cta p a {
+      display: inline-block;
+      padding: 0.55rem 1.3rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.925rem;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
+    }
+
+    .cta p:first-child a {
+      background: var(--accent);
+      color: #0d1117;
+    }
+
+    .cta p:first-child a:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .cta p:not(:first-child) a {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .cta p:not(:first-child) a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ── Lists ── */
+    ul, ol {
+      margin: 0.5rem 0 1.25rem 1.4rem;
+    }
+
+    li { margin-bottom: 0.45rem; }
+    li p { margin-bottom: 0.25rem; }
+
+    /* ── Tables ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.25rem 0;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th {
+      background: var(--surface-2);
+      padding: 0.65rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: rgba(88, 166, 255, 0.04); }
+
+    /* ── Code ── */
+    code {
+      font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 0.875em;
+      background: var(--surface-2);
+      color: #e06c75;
+      padding: 0.15em 0.45em;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    pre {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      overflow-x: auto;
+      margin: 1.25rem 0;
+    }
+
+    pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--text);
+      font-size: 0.875rem;
+    }
+
+    /* ── Images ── */
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin: 1.25rem 0;
+      display: block;
+      border: 1px solid var(--border);
+    }
+
+    img[src*="shields.io"],
+    img[src*="img.shields.io"],
+    img[src*="ci.appveyor.com"] {
+      display: inline;
+      margin: 0 0.2rem 0 0;
+      border: none;
+      border-radius: 3px;
+      vertical-align: middle;
+    }
+
+    /* ── Blockquote ── */
+    blockquote {
+      border-left: 3px solid var(--accent);
+      margin: 1.25rem 0;
+      padding: 0.75rem 1.25rem;
+      background: var(--surface);
+      border-radius: 0 8px 8px 0;
+      color: var(--text-muted);
+    }
+
+    blockquote p { margin-bottom: 0; }
+
+    /* ── Horizontal rule ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.25rem; margin-top: 2.5rem; }
+      main { padding: 2rem 1rem 3.5rem; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 0.75rem; }
+      table { font-size: 0.82rem; }
+      th, td { padding: 0.5rem 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="nav-brand" href="#"><img src="rack_enclosure/RackEnclosure-UpmixProtoUI.jpeg" alt="">Audio
+Configuration — Raspberry123DSI</a>
+    <div class="nav-links">
+      <a href="https://github.com/ChristianAhrens/Raspberry123DSI">GitHub</a>
+      <a href="docs/" class="btn-docs">Docs</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<div class="hero-icon"><img src="rack_enclosure/RackEnclosure-UpmixProtoUI.jpeg" alt="Audio
+Configuration — Raspberry123DSI icon"></div>
+<h1 id="audio-configuration">Audio Configuration</h1>
+<p>Configuration for routing audio between the Raspberry Pi and the RME
+Dante audio interface, plus the Mema plugin chain setup.</p>
+<h2 id="alsa-configuration">ALSA Configuration</h2>
+<p>The ALSA configuration at <code>/etc/asound.conf</code> defines a
+custom plug device for the RME Dante interface:</p>
+<pre><code>pcm.dante16 {
+    type plug
+    slave {
+        pcm &quot;hw:Dante24290649,0&quot;
+        channels 32
+        rate 48000
+        format S32_LE
+    }
+    ttable {
+        # input channel (slave side) -&gt; output channel (app side)
+        # format: ttable.SLAVE_CH.APP_CH = gain
+        0.0   1
+        1.1   1
+        2.2   1
+        3.3   1
+        4.4   1
+        5.5   1
+        6.6   1
+        7.7   1
+        8.8   1
+        9.9   1
+        10.10 1
+        11.11 1
+        12.12 1
+        13.13 1
+        14.14 1
+        15.15 1
+    }
+}
+
+ctl.dante16 {
+    type hw
+    card Dante24290649
+}</code></pre>
+<p>Key settings: - <strong><code>type plug</code></strong> —
+Automatically converts between different PCM formats (allows
+applications to use any format) -
+<strong><code>channels 32</code></strong> — 16 input + 16 output
+channels (full RME interface capacity) -
+<strong><code>rate 48000</code></strong> — 48kHz sample rate (standard
+for professional audio) - <strong><code>format S32_LE</code></strong> —
+32-bit little-endian integer (maximum precision) -
+<strong><code>ttable</code></strong> — 1:1 channel mapping (input
+0→output 0, input 1→output 1, etc.)</p>
+<p>The card name <code>Dante24290649</code> is the RME serial number
+embedded in the hardware. Replace this with your actual card name if
+different (check with <code>aplay -l</code>).</p>
+<h2 id="dsp-plugin-configuration">DSP Plugin Configuration</h2>
+<p>Mema loads LV2 plugins at runtime, and the plugin chain is fully
+configurable through its XML config file (<code>Mema.config</code>). The
+system is plugin-agnostic: any LV2 plugin available for aarch64 can be
+loaded, including upmixers, equalizers, reverb, and custom DSP
+processors.</p>
+<h3 id="example-lv2-upmix-plugins-for-aarch64">Example LV2 upmix plugins
+for aarch64</h3>
+<p>The following LV2 upmix plugins are available for the Raspberry Pi 5
+(aarch64) and can be configured in Mema:</p>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 36%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Plugin</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Upmix Formats</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Qupmix</strong> (LSP)</td>
+<td style="text-align: left;">Stereo → 5.1 / 7.1 upmixer (Linux Sound
+Plugins)</td>
+<td style="text-align: left;">5.1, 7.1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>mbeq</strong> (LSP)</td>
+<td style="text-align: left;">Multi-band EQ — not an upmixer, but
+commonly paired</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>GVerb</strong> (LV2)</td>
+<td style="text-align: left;">Convolution reverb — spatial enhancement,
+not upmix</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>calf</strong> (LV2)</td>
+<td style="text-align: left;">Suite with spatial processing modules
+(chorus, flanger, reverb)</td>
+<td style="text-align: left;">—</td>
+</tr>
+</tbody>
+</table>
+<p>For immersive formats (surround, object-based), proprietary or
+commercial LV2 upmixers may also be loaded. The system does not impose
+restrictions on which plugin is used — the config file simply specifies
+the plugin URI, I/O channel counts, and parameter values.</p>
+<h3 id="configuring-a-plugin-in-mema">Configuring a plugin in Mema</h3>
+<p>The Mema config XML specifies: -
+<strong><code>deviceType</code></strong> — ALSA (or other backend) -
+<strong><code>audioDeviceInChans</code> /
+<code>audioDeviceOutChans</code></strong> — Which channels are active
+(<code>1</code> = enabled, <code>0</code> = muted) -
+<strong><code>&lt;PLUGIN&gt;</code></strong> — Plugin name, format
+(LV2), file URL, unique ID, I/O channel counts -
+<strong><code>&lt;PLUGINPARAM&gt;</code></strong> — Per-parameter values
+(gain, mute, format selection, etc.)</p>
+<p>A complete example config is available at <a
+href="https://github.com/ChristianAhrens/Raspberry123DSI/blob/main/config/Mema.config">config/Mema.config</a>
+(local reference only — not deployed to the public site).</p>
+<h2 id="audio-device-setup">Audio Device Setup</h2>
+<p>The Mema application config (<code>config/Mema.config</code>)
+specifies:</p>
+<ul>
+<li><strong>Device type:</strong> ALSA</li>
+<li><strong>Audio output device:</strong> <code>dante16</code> (the
+custom plug device defined above)</li>
+<li><strong>Audio input device:</strong> <code>dante16</code></li>
+<li><strong>Sample rate:</strong> 48000 Hz</li>
+<li><strong>Buffer size:</strong> 512 samples</li>
+<li><strong>Input channels:</strong> 16 (all enabled)</li>
+<li><strong>Output channels:</strong> 16 (all enabled)</li>
+</ul>
+<h2 id="getting-the-card-name">Getting the Card Name</h2>
+<p>To find your RME card name:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aplay</span> <span class="at">-l</span></span></code></pre></div>
+<p>Look for a line containing “Dante” — the alphanumeric string after it
+is the card name to use in <code>asound.conf</code>.</p>
+<hr />
+<p><em>Use what is provided here at your own risk.</em></p>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="https://github.com/ChristianAhrens/Raspberry123DSI">GitHub Repository</a>
+      <a href="docs/">Documentation</a>
+      <a href="https://github.com/ChristianAhrens/Raspberry123DSI/blob/main/README.md">Full README</a>
+    </div>
+    <p>Open source &mdash; use what is provided here at your own risk.</p>
+  </div>
+</footer>
+
+</body>
+</html>

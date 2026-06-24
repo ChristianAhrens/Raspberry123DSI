@@ -1,0 +1,64 @@
+name: Deploy Documentation Site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pandoc
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y pandoc
+
+      - name: Build landing page
+        run: |
+          pandoc Resources/Documentation/PRODUCTPAGE.md \
+            --template Resources/Documentation/page_template.html \
+            --from markdown \
+            --output index.html
+
+      - name: Build docs index
+        run: |
+          pandoc docs/index.md \
+            --template Resources/Documentation/page_template.html \
+            --from markdown \
+            --output docs/index.html
+
+      - name: Build doc pages
+        run: |
+          for f in docs/rack-assembly.md docs/os-setup.md docs/audio-config.md; do
+            base=$(basename "$f" .md)
+            pandoc "$f" \
+              --template Resources/Documentation/page_template.html \
+              --from markdown \
+              --output "docs/${base}.html"
+          done
+
+      - name: Assemble GitHub Pages site
+        run: |
+          mkdir -p site/config site/assets site/docs
+          cp index.html site/index.html
+          cp -r docs/. site/docs/
+          cp -r config/. site/config/
+          rm -f site/config/Mema.config  # excluded: contains sensitive plugin state data
+          cp -r rack_enclosure/. site/assets/
+          touch site/.nojekyll
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+          force_orphan: true

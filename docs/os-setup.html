@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete Raspberry Pi OS
+configuration: bootloader, kernel, Sway window manager, splash screen.">
+  <meta property="og:title" content="OS Setup — Raspberry123DSI">
+  <meta property="og:description" content="Complete Raspberry Pi OS
+configuration: bootloader, kernel, Sway window manager, splash screen.">
+  <meta property="og:type" content="website">
+  <title>OS Setup — Raspberry123DSI</title>
+  <style>
+    :root {
+      --bg:          #0d1117;
+      --surface:     #161b22;
+      --surface-2:   #21262d;
+      --border:      #30363d;
+      --text:        #e6edf3;
+      --text-muted:  #848d97;
+      --accent:      #58a6ff;
+      --accent-dim:  #1f3a5f;
+      --accent-hover:#79b8ff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Navigation ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 17, 23, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-brand img {
+      height: 28px;
+      width: auto;
+      border: none;
+      border-radius: 6px;
+      margin: 0;
+      display: block;
+    }
+
+    .hero-icon {
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-icon img {
+      height: 96px;
+      width: auto;
+      border: none;
+      border-radius: 16px;
+      margin: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-links .btn-docs {
+      color: var(--accent);
+      border: 1px solid var(--accent-dim);
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .nav-links .btn-docs:hover {
+      background: var(--accent-dim);
+      color: var(--text);
+    }
+
+    /* ── Main content ── */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 5rem;
+    }
+
+    /* ── Headings ── */
+    h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, var(--text) 55%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-top: 3.25rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      margin-top: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── Body text ── */
+    p { margin-bottom: 1rem; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    strong { color: var(--text); font-weight: 600; }
+
+    /* ── CTA button row ── */
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .cta p { margin: 0; }
+
+    .cta p a {
+      display: inline-block;
+      padding: 0.55rem 1.3rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.925rem;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
+    }
+
+    .cta p:first-child a {
+      background: var(--accent);
+      color: #0d1117;
+    }
+
+    .cta p:first-child a:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .cta p:not(:first-child) a {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .cta p:not(:first-child) a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ── Lists ── */
+    ul, ol {
+      margin: 0.5rem 0 1.25rem 1.4rem;
+    }
+
+    li { margin-bottom: 0.45rem; }
+    li p { margin-bottom: 0.25rem; }
+
+    /* ── Tables ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.25rem 0;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th {
+      background: var(--surface-2);
+      padding: 0.65rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: rgba(88, 166, 255, 0.04); }
+
+    /* ── Code ── */
+    code {
+      font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 0.875em;
+      background: var(--surface-2);
+      color: #e06c75;
+      padding: 0.15em 0.45em;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    pre {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      overflow-x: auto;
+      margin: 1.25rem 0;
+    }
+
+    pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--text);
+      font-size: 0.875rem;
+    }
+
+    /* ── Images ── */
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin: 1.25rem 0;
+      display: block;
+      border: 1px solid var(--border);
+    }
+
+    img[src*="shields.io"],
+    img[src*="img.shields.io"],
+    img[src*="ci.appveyor.com"] {
+      display: inline;
+      margin: 0 0.2rem 0 0;
+      border: none;
+      border-radius: 3px;
+      vertical-align: middle;
+    }
+
+    /* ── Blockquote ── */
+    blockquote {
+      border-left: 3px solid var(--accent);
+      margin: 1.25rem 0;
+      padding: 0.75rem 1.25rem;
+      background: var(--surface);
+      border-radius: 0 8px 8px 0;
+      color: var(--text-muted);
+    }
+
+    blockquote p { margin-bottom: 0; }
+
+    /* ── Horizontal rule ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.25rem; margin-top: 2.5rem; }
+      main { padding: 2rem 1rem 3.5rem; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 0.75rem; }
+      table { font-size: 0.82rem; }
+      th, td { padding: 0.5rem 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="nav-brand" href="#"><img src="rack_enclosure/RackEnclosure-UpmixProtoUI.jpeg" alt="">OS
+Setup — Raspberry123DSI</a>
+    <div class="nav-links">
+      <a href="https://github.com/ChristianAhrens/Raspberry123DSI">GitHub</a>
+      <a href="docs/" class="btn-docs">Docs</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<div class="hero-icon"><img src="rack_enclosure/RackEnclosure-UpmixProtoUI.jpeg" alt="OS
+Setup — Raspberry123DSI icon"></div>
+<h1 id="os-setup">OS Setup</h1>
+<p>Complete Raspberry Pi OS configuration for the kiosk system. All
+configuration files are in the <a
+href="https://github.com/ChristianAhrens/Raspberry123DSI/tree/main/config">config/</a>
+directory of the repository.</p>
+<h2 id="boot-configuration">Boot Configuration</h2>
+<h3 id="config.txt-firmware-configuration">config.txt — Firmware
+Configuration</h3>
+<p>Located at <code>/boot/firmware/config.txt</code> on the Pi:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode ini"><code class="sourceCode ini"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Enable audio (loads snd_bcm2835)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">dtparam</span><span class="ot">=</span><span class="st">audio=on</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Enable DRM VC4 V3D driver</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">dtoverlay</span><span class="ot">=</span><span class="st">vc4-kms-v3d</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">max_framebuffers</span><span class="ot">=</span><span class="dv">2</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># DSI display (12.3&quot; Waveshare, 4-lane)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">dtoverlay</span><span class="ot">=</span><span class="st">vc4-kms-dsi-waveshare-panel-v2,12_3_inch_a_4lane</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Disable firmware video setup (use kernel&#39;s default)</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dt">disable_fw_kms_setup</span><span class="ot">=</span><span class="dv">1</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 64-bit mode</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="dt">arm_64bit</span><span class="ot">=</span><span class="dv">1</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Disable overscan</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="dt">disable_overscan</span><span class="ot">=</span><span class="dv">1</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Maximum firmware speed</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="dt">arm_boost</span><span class="ot">=</span><span class="dv">1</span></span></code></pre></div>
+<p>Key settings: - <strong><code>dtoverlay=vc4-kms-v3d</code></strong> —
+Enables the DRM/KMS graphics driver required for Wayland/Sway -
+<strong><code>dtoverlay=vc4-kms-dsi-waveshare-panel-v2,12_3_inch_a_4lane</code></strong>
+— Configures the DSI display driver for the 12.3” Waveshare panel
+(4-lane DSI) - <strong><code>max_framebuffers=2</code></strong> — Allows
+two framebuffers (one for console, one for Sway) -
+<strong><code>disable_fw_kms_setup=1</code></strong> — Prevents the
+firmware from setting an initial video mode; the kernel handles it via
+cmdline.txt</p>
+<h3 id="cmdline.txt-kernel-boot-parameters">cmdline.txt — Kernel Boot
+Parameters</h3>
+<p>Located at <code>/boot/firmware/cmdline.txt</code> on the Pi (single
+line):</p>
+<pre><code>console=serial0,115200 console=tty1 root=PARTUUID=ff12f123-02 rootfstype=ext4 fsck.repair=yes rootwait quiet splash plymouth.ignore-serial-consoles cfg80211.ieee80211_regdom=D fbcon=rotate:3</code></pre>
+<p>Key parameters: -
+<strong><code>console=serial0,115200 console=tty1</code></strong> —
+Serial console on GPIO + virtual terminal 1 -
+<strong><code>quiet splash</code></strong> — Quiet boot with splash
+screen (Plymouth) -
+<strong><code>plymouth.ignore-serial-consoles</code></strong> — Prevents
+Plymouth from interfering with serial output -
+<strong><code>cfg80211.ieee80211_regdom=D</code></strong> — Sets WiFi
+regulatory domain to Germany -
+<strong><code>fbcon=rotate:3</code></strong> — Rotates the framebuffer
+console 270° (matches the 270° screen rotation)</p>
+<h2 id="window-manager-sway">Window Manager: Sway</h2>
+<p>Configuration at <code>~/.config/sway/config</code>:</p>
+<pre><code># No window tile frames, but a little gap
+default_border none
+default_floating_border none
+gaps inner 3
+gaps outer 3
+
+# Output setup (DSI display rotated 270°)
+output DSI-2 transform 270
+
+# Launch apps side by side on startup
+exec ~/.config/sway/launchAndLayout.sh
+
+# Force all windows to tile horizontally
+default_orientation horizontal
+
+# Kiosk hardening
+bindsym --inhibited Control+q exit</code></pre>
+<p>Key settings: -
+<strong><code>output DSI-2 transform 270</code></strong> — Rotates the
+DSI display 270° (portrait mode) - <strong><code>gaps inner 3</code> /
+<code>gaps outer 3</code></strong> — 3px gaps between windows and screen
+edges - <strong><code>default_border none</code></strong> — No window
+borders (kiosk mode)</p>
+<h2 id="application-launcher">Application Launcher</h2>
+<p>Script at <code>~/.config/sway/launchAndLayout.sh</code>:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Launch apps sequentially, waiting for each to register before starting the next</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">MemaMo</span> <span class="at">--noconfigui</span> <span class="at">--noupdates</span> <span class="kw">&amp;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sleep</span> 1</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Umsci</span> <span class="at">--noupdates</span> <span class="kw">&amp;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sleep</span> 1</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">MemaRe</span> <span class="at">--noconfigui</span> <span class="at">--noupdates</span> <span class="kw">&amp;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sleep</span> 2</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Window sizing (proportional widths)</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">swaymsg</span> <span class="st">&#39;[class=&quot;Mema.Mo&quot;] resize set width 25ppt&#39;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ex">swaymsg</span> <span class="st">&#39;[class=&quot;Umsci&quot;] resize set width 55ppt&#39;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="ex">swaymsg</span> <span class="st">&#39;[class=&quot;Mema.Re&quot;] resize set width 20ppt&#39;</span></span></code></pre></div>
+<p>Applications launch in sequence with a 1–2 second delay between each
+(allowing registration with the window manager), then are sized
+proportionally: Mema.Mo 25%, Umsci 55%, Mema.Re 20%.</p>
+<h2 id="session-startup">Session Startup</h2>
+<p>Configuration at <code>~/.bash_login</code>:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start tmux on login</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">command</span> <span class="at">-v</span> tmux <span class="op">&amp;&gt;</span> /dev/null <span class="kw">&amp;&amp;</span> <span class="bu">[</span> <span class="ot">-z</span> <span class="st">&quot;</span><span class="va">$TMUX</span><span class="st">&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">tmux</span> new-session <span class="at">-d</span> <span class="at">-s</span> main <span class="dt">\;</span> <span class="dt">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    split-window <span class="at">-h</span> <span class="dt">\;</span> <span class="dt">\</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    split-window <span class="at">-v</span> <span class="at">-t</span> main:0.0 <span class="dt">\;</span> <span class="dt">\</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    send-keys <span class="at">-t</span> main:0.0 <span class="st">&#39;sway&#39;</span> Enter <span class="dt">\;</span> <span class="dt">\</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    send-keys <span class="at">-t</span> main:0.1 <span class="st">&#39;while true; do Mema --headless --noupdates; echo &quot;[mema] exited with $?, restarting in 3s...&quot;; sleep 3; done&#39;</span> Enter <span class="dt">\;</span> <span class="dt">\</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    send-keys <span class="at">-t</span> main:0.2 <span class="st">&#39;btop&#39;</span> Enter <span class="dt">\;</span> <span class="dt">\</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    attach-session <span class="at">-t</span> main</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span> <span class="st">&quot;</span><span class="va">$HOME</span><span class="st">/.cargo/env&quot;</span></span></code></pre></div>
+<p>On login, tmux creates a 3-pane layout: - <strong>Pane 0</strong> —
+Starts Sway (the graphical kiosk) - <strong>Pane 1</strong> — Runs Mema
+in headless mode with auto-restart on crash - <strong>Pane 2</strong> —
+Runs <code>btop</code> (system monitor)</p>
+<p>This provides a debugging-friendly setup: if Sway crashes, the other
+two panes remain accessible for diagnostics.</p>
+<h2 id="boot-splash-screen">Boot splash screen</h2>
+<p>To set a custom boot splash screen:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp Downloads/dbaudio-soundscape-logo_rot.png /usr/share/plymouth/themes/pix/splash.png</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> update-initramfs <span class="at">-u</span></span></code></pre></div>
+<h2 id="optional-time-protocol-ptp">Optional: Time Protocol (PTP)</h2>
+<p>For precision time synchronization with the Dante network, a statime
+PTP daemon can be configured:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode ini"><code class="sourceCode ini"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># /etc/systemd/system/statime.service</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[Unit]</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dt">Description</span><span class="ot">=</span><span class="st">statime PTP daemon</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dt">After</span><span class="ot">=</span><span class="st">network.target</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">[Service]</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="dt">Type</span><span class="ot">=</span><span class="st">simple</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="dt">User</span><span class="ot">=</span><span class="st">root</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStart</span><span class="ot">=</span><span class="st">/path/to/statime -c /path/to/inferno-ptv1.toml</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="dt">Restart</span><span class="ot">=</span><span class="st">on-failure</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="dt">RestartSec</span><span class="ot">=</span><span class="dv">3</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="kw">[Install]</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="dt">WantedBy</span><span class="ot">=</span><span class="st">multi-user.target</span></span></code></pre></div>
+<hr />
+<p><em>Use what is provided here at your own risk.</em></p>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="https://github.com/ChristianAhrens/Raspberry123DSI">GitHub Repository</a>
+      <a href="docs/">Documentation</a>
+      <a href="https://github.com/ChristianAhrens/Raspberry123DSI/blob/main/README.md">Full README</a>
+    </div>
+    <p>Open source &mdash; use what is provided here at your own risk.</p>
+  </div>
+</footer>
+
+</body>
+</html>
