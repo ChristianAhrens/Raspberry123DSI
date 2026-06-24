@@ -8,11 +8,13 @@ This repository contains the reference documentation, configuration files, and l
 
 | Component | Details |
 |:----------|:--------|
-| **Controller** | Raspberry Pi 5 (64-bit Raspberry Pi OS) |
+| **Controller** | Raspberry Pi 5 (64-bit Raspberry Pi OS, Debian Trixie) |
 | **Display** | Waveshare 12.3" DSI touchscreen (720×1920, rotated 270°) |
+| **Display config** | kanshi (Wayland output profile daemon) |
 | **Window Manager** | Sway (Wayland compositor, tile-based) |
-| **Audio** | ALSA routed to RME Dante interface (16×16, 48kHz/32-bit) |
-| **Applications** | Mema (audio matrix), Mema.Mo (network monitor), Mema.Re (remote control) |
+| **Audio interface** | RME Digiface Dante (USB, 16×16, 48kHz/32-bit) via ALSA |
+| **Network** | Ethernet with IPv4 link-local for Dante device discovery |
+| **Applications** | Mema (audio matrix), Mema.Mo (network monitor), Mema.Re (remote control), Umsci (DS100 control) |
 
 ## Hardware
 
@@ -44,6 +46,7 @@ CHANGELOG.md           — Version history
 config/                — Raspberry Pi OS configuration files
 │   ├── config.txt     — Firmware / bootloader config
 │   ├── cmdline.txt    — Kernel boot parameters
+│   ├── kanshi         — kanshi display output profile
 │   ├── config         — Sway window manager config
 │   ├── asound.conf    — ALSA Dante audio routing
 │   ├── bash_login     — Session startup (Sway + apps)

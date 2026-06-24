@@ -23,7 +23,7 @@ jobs:
 
       - name: Build landing page
         run: |
-          pandoc Resources/Documentation/PRODUCTPAGE.md \
+          pandoc PRODUCTPAGE.md \
             --template Resources/Documentation/page_template.html \
             --from markdown \
             --output index.html

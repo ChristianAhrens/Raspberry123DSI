@@ -366,24 +366,23 @@ configuration: bootloader, kernel, Sway window manager, splash screen.">
 
 <header>
   <nav>
-    <a class="nav-brand" href="#"><img src="rack_enclosure/RackEnclosure-UpmixProtoUI.jpeg" alt="">OS
-Setup — Raspberry123DSI</a>
+    <a class="nav-brand" href="./"><img src="../rack_enclosure/RackEnclosure-UpmixProtoUI.jpeg" alt="">OS Setup — Raspberry123DSI</a>
     <div class="nav-links">
       <a href="https://github.com/ChristianAhrens/Raspberry123DSI">GitHub</a>
-      <a href="docs/" class="btn-docs">Docs</a>
+      <a href="./" class="btn-docs">Docs</a>
     </div>
   </nav>
 </header>
 
 <main>
-<div class="hero-icon"><img src="rack_enclosure/RackEnclosure-UpmixProtoUI.jpeg" alt="OS
-Setup — Raspberry123DSI icon"></div>
+<div class="hero-icon"><img src="../rack_enclosure/RackEnclosure-UpmixProtoUI.jpeg" alt="OS Setup — Raspberry123DSI icon"></div>
 <h1 id="os-setup">OS Setup</h1>
 <p>Complete Raspberry Pi OS configuration for the kiosk system. All
 configuration files are in the <a
 href="https://github.com/ChristianAhrens/Raspberry123DSI/tree/main/config">config/</a>
 directory of the repository.</p>
 <h2 id="boot-configuration">Boot Configuration</h2>
+
 <h3 id="config.txt-firmware-configuration">config.txt — Firmware
 Configuration</h3>
 <p>Located at <code>/boot/firmware/config.txt</code> on the Pi:</p>
@@ -434,6 +433,29 @@ Plymouth from interfering with serial output -
 regulatory domain to Germany -
 <strong><code>fbcon=rotate:3</code></strong> — Rotates the framebuffer
 console 270° (matches the 270° screen rotation)</p>
+<h2 id="display-output-profile-kanshi">Display Output Profile (kanshi)</h2>
+<p>kanshi is a Wayland output management daemon that applies display
+profiles when specific outputs are connected. It manages the DSI-2
+output and takes precedence over the <code>output</code> directives in
+the Sway config when active.</p>
+<p>Configuration at <code>~/.config/kanshi/config</code>:</p>
+<pre><code>profile {
+    output DSI-2 enable scale 1.000000 mode 720x1920@62.976 position 0,0 transform 90
+}</code></pre>
+<p>Key settings:</p>
+<ul>
+<li><strong><code>mode 720x1920@62.976</code></strong> — Native panel
+resolution at ~63 Hz refresh rate</li>
+<li><strong><code>transform 90</code></strong> — Rotates the output to
+landscape orientation (due to a known wlroots behaviour, kanshi's
+<code>transform 90</code> produces the same physical rotation as
+<code>transform 270</code> in the Sway config)</li>
+<li><strong><code>scale 1.000000</code></strong> — No HiDPI scaling
+(1:1 pixel mapping)</li>
+</ul>
+<p>kanshi can be started via a systemd user service
+(<code>systemctl --user enable --now kanshi</code>) or by adding
+<code>exec kanshi</code> to <code>~/.config/sway/config</code>.</p>
 <h2 id="window-manager-sway">Window Manager: Sway</h2>
 <p>Configuration at <code>~/.config/sway/config</code>:</p>
 <pre><code># No window tile frames, but a little gap
@@ -499,29 +521,20 @@ in headless mode with auto-restart on crash - <strong>Pane 2</strong> —
 Runs <code>btop</code> (system monitor)</p>
 <p>This provides a debugging-friendly setup: if Sway crashes, the other
 two panes remain accessible for diagnostics.</p>
-<h2 id="boot-splash-screen">Boot splash screen</h2>
+<h2 id="boot-splash-screen">Boot Splash Screen</h2>
 <p>To set a custom boot splash screen:</p>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cp Downloads/dbaudio-soundscape-logo_rot.png /usr/share/plymouth/themes/pix/splash.png</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> update-initramfs <span class="at">-u</span></span></code></pre></div>
-<h2 id="optional-time-protocol-ptp">Optional: Time Protocol (PTP)</h2>
-<p>For precision time synchronization with the Dante network, a statime
-PTP daemon can be configured:</p>
-<div class="sourceCode" id="cb7"><pre
-class="sourceCode ini"><code class="sourceCode ini"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># /etc/systemd/system/statime.service</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[Unit]</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dt">Description</span><span class="ot">=</span><span class="st">statime PTP daemon</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dt">After</span><span class="ot">=</span><span class="st">network.target</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">[Service]</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="dt">Type</span><span class="ot">=</span><span class="st">simple</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="dt">User</span><span class="ot">=</span><span class="st">root</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="dt">ExecStart</span><span class="ot">=</span><span class="st">/path/to/statime -c /path/to/inferno-ptv1.toml</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="dt">Restart</span><span class="ot">=</span><span class="st">on-failure</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="dt">RestartSec</span><span class="ot">=</span><span class="dv">3</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="kw">[Install]</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="dt">WantedBy</span><span class="ot">=</span><span class="st">multi-user.target</span></span></code></pre></div>
+<pre><code>sudo cp Downloads/dbaudio-soundscape-logo_rot.png /usr/share/plymouth/themes/pix/splash.png
+sudo update-initramfs -u</code></pre>
+<h2 id="network-link-local-for-dante">Network: Link-Local Addressing for Dante</h2>
+<p>Dante audio devices use IPv4 link-local addressing (169.254.x.x,
+RFC 3927) for automatic discovery on a local subnet when no DHCP server
+is present. Enable link-local on the wired Ethernet interface:</p>
+<pre><code>sudo nmcli con mod "Wired connection 1" ipv4.link-local enabled</code></pre>
+<p><code>"Wired connection 1"</code> is the default NetworkManager
+connection name. Verify the actual name on your system with
+<code>nmcli con show</code> if this command returns an error.</p>
+<p>This requires NetworkManager ≥ 1.40, which is included in Raspberry
+Pi OS (Debian Trixie).</p>
 <hr />
 <p><em>Use what is provided here at your own risk.</em></p>
 </main>
@@ -530,7 +543,7 @@ class="sourceCode ini"><code class="sourceCode ini"><span id="cb7-1"><a href="#c
   <div class="footer-inner">
     <div class="footer-links">
       <a href="https://github.com/ChristianAhrens/Raspberry123DSI">GitHub Repository</a>
-      <a href="docs/">Documentation</a>
+      <a href="./">Documentation</a>
       <a href="https://github.com/ChristianAhrens/Raspberry123DSI/blob/main/README.md">Full README</a>
     </div>
     <p>Open source &mdash; use what is provided here at your own risk.</p>

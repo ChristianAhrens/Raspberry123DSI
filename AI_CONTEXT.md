@@ -101,8 +101,8 @@ docs/
   audio-config.md / audio-config.html — Audio routing guide
   rack-assembly.md / rack-assembly.html — Enclosure assembly guide
 
+PRODUCTPAGE.md                     — Source markdown for the GitHub Pages root index
 Resources/Documentation/
-  PRODUCTPAGE.md                   — Source markdown for the GitHub Pages root index
   page_template.html               — HTML template used for docs pages
 ```
 
@@ -177,22 +177,19 @@ The actual config file is the ground truth; the docs and DOCU.txt may be stale.
 
 ---
 
-## Pending / Planned Work (as of session interruption 2026-06-24)
+## Completed Work (2026-06-24)
 
-The session that was interrupted (macOS kernel panic, OOM at 36GB RAM) was about to work on:
+All DOCU.txt integration work was completed in this session:
 
-1. **Process `config/DOCU.txt`** — Extract all config details, validate them (possibly with web search), and integrate into:
-   - `README.md` — add missing items (kanshi config, link-local networking, Mema sudo note)
-   - `docs/os-setup.md` + `docs/os-setup.html` — add kanshi section, link-local section, clarify no X11/display manager
-   - Potentially add a `config/kanshi` file and `config/statime-inferno-ptpv1.toml` to the repo
-   
-2. **Sanity-check / validate configs** — Cross-reference DOCU.txt contents against current best practices for:
-   - Sway on RPi5 with DSI display
-   - kanshi vs. direct Sway output config
-   - ALSA Dante routing
-   - statime PTP configuration
+- Added `config/kanshi` (kanshi display output profile)
+- Added kanshi section + link-local networking section to `docs/os-setup.md` and `docs/os-setup.html`
+- Removed the abandoned statime/PTP section from `docs/os-setup.md` and `docs/os-setup.html`
+- Fixed broken image paths in all four `docs/*.html` files (`src="rack_enclosure/..."` → `src="../rack_enclosure/..."`)
+- Fixed broken "Docs" nav link in `docs/*.html` (`href="docs/"` → `href="./"`)
+- Updated `README.md` system overview table (added kanshi, link-local, Umsci, corrected RME description)
+- Updated `README.md` repo structure listing (added kanshi config file)
 
-3. The GitHub Pages site was just deployed (commit `bb835a3`). The image path bug in docs HTML files may still be present.
+**statime/PTP was deliberately omitted** — the owner attempted Dante audio via the RPi5 onboard NIC using the inferno/statime open-source PTP project, but aborted when the use case was not covered. All references to statime, inferno, and PTP have been removed from the docs.
 
 ---
 

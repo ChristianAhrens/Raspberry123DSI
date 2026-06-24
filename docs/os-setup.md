@@ -60,6 +60,25 @@ Key parameters:
 - **`cfg80211.ieee80211_regdom=D`** — Sets WiFi regulatory domain to Germany
 - **`fbcon=rotate:3`** — Rotates the framebuffer console 270° (matches the 270° screen rotation)
 
+## Display Output Profile (kanshi)
+
+kanshi is a Wayland output management daemon that applies display profiles when specific outputs are connected. It manages the DSI-2 output and takes precedence over the `output` directives in the Sway config when active.
+
+Configuration at `~/.config/kanshi/config`:
+
+```
+profile {
+    output DSI-2 enable scale 1.000000 mode 720x1920@62.976 position 0,0 transform 90
+}
+```
+
+Key settings:
+- **`mode 720x1920@62.976`** — Native panel resolution at ~63 Hz refresh rate
+- **`transform 90`** — Rotates the output to landscape orientation (note: due to a known wlroots behaviour, kanshi's `transform 90` produces the same physical rotation as `transform 270` in the Sway config)
+- **`scale 1.000000`** — No HiDPI scaling (1:1 pixel mapping)
+
+kanshi can be started via a systemd user service (`systemctl --user enable --now kanshi`) or by adding `exec kanshi` to `~/.config/sway/config`.
+
 ## Window Manager: Sway
 
 Configuration at `~/.config/sway/config`:
@@ -137,7 +156,7 @@ On login, tmux creates a 3-pane layout:
 
 This provides a debugging-friendly setup: if Sway crashes, the other two panes remain accessible for diagnostics.
 
-## Boot splash screen
+## Boot Splash Screen
 
 To set a custom boot splash screen:
 
@@ -146,26 +165,17 @@ sudo cp Downloads/dbaudio-soundscape-logo_rot.png /usr/share/plymouth/themes/pix
 sudo update-initramfs -u
 ```
 
-## Optional: Time Protocol (PTP)
+## Network: Link-Local Addressing for Dante
 
-For precision time synchronization with the Dante network, a statime PTP daemon can be configured:
+Dante audio devices use IPv4 link-local addressing (169.254.x.x, RFC 3927) for automatic discovery on a local subnet when no DHCP server is present. Enable link-local on the wired Ethernet interface:
 
-```ini
-# /etc/systemd/system/statime.service
-[Unit]
-Description=statime PTP daemon
-After=network.target
-
-[Service]
-Type=simple
-User=root
-ExecStart=/path/to/statime -c /path/to/inferno-ptv1.toml
-Restart=on-failure
-RestartSec=3
-
-[Install]
-WantedBy=multi-user.target
+```bash
+sudo nmcli con mod "Wired connection 1" ipv4.link-local enabled
 ```
+
+`"Wired connection 1"` is the default NetworkManager connection name. Verify the actual name on your system with `nmcli con show` if this command returns an error.
+
+This requires NetworkManager ≥ 1.40, which is included in Raspberry Pi OS (Debian Trixie).
 
 ---
 
