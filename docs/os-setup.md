@@ -2,7 +2,8 @@
 title: OS Setup — Raspberry123DSI
 description: "Complete Raspberry Pi OS configuration: bootloader, kernel, Sway window manager, splash screen."
 github_url: https://github.com/ChristianAhrens/Raspberry123DSI
-icon: rack_enclosure/RackEnclosure-UpmixProtoUI.jpeg
+icon: ../assets/RackEnclosure-UpmixProtoUI.jpeg
+docs_path: ./
 ---
 
 # OS Setup

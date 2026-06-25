@@ -2,7 +2,8 @@
 title: Audio Configuration — Raspberry123DSI
 description: ALSA/Dante routing, LV2 DSP plugin configuration, and audio device setup.
 github_url: https://github.com/ChristianAhrens/Raspberry123DSI
-icon: rack_enclosure/RackEnclosure-UpmixProtoUI.jpeg
+icon: ../assets/RackEnclosure-UpmixProtoUI.jpeg
+docs_path: ./
 ---
 
 # Audio Configuration
