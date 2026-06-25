@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A Raspberry Pi 5 kiosk system
+running three audio applications on a DSI touchscreen in a self-built
+laser-cut rack enclosure.">
+  <meta property="og:title" content="Raspberry123DSI">
+  <meta property="og:description" content="A Raspberry Pi 5 kiosk system
+running three audio applications on a DSI touchscreen in a self-built
+laser-cut rack enclosure.">
+  <meta property="og:type" content="website">
+  <title>Raspberry123DSI</title>
+  <style>
+    :root {
+      --bg:          #0d1117;
+      --surface:     #161b22;
+      --surface-2:   #21262d;
+      --border:      #30363d;
+      --text:        #e6edf3;
+      --text-muted:  #848d97;
+      --accent:      #58a6ff;
+      --accent-dim:  #1f3a5f;
+      --accent-hover:#79b8ff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Navigation ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 17, 23, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-brand img {
+      height: 28px;
+      width: auto;
+      border: none;
+      border-radius: 6px;
+      margin: 0;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-links .btn-docs {
+      color: var(--accent);
+      border: 1px solid var(--accent-dim);
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .nav-links .btn-docs:hover {
+      background: var(--accent-dim);
+      color: var(--text);
+    }
+
+    /* ── Hero icon (small, used on sub-pages) ── */
+    .hero-icon {
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-icon img {
+      height: 96px;
+      width: auto;
+      border: none;
+      border-radius: 16px;
+      margin: 0;
+    }
+
+    /* ── Hero image (full-width banner) ── */
+    .hero-img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin: 0 0 2.5rem;
+      display: block;
+    }
+
+    /* ── Main content ── */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 5rem;
+    }
+
+    /* ── Headings ── */
+    h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, var(--text) 55%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-top: 3.25rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      margin-top: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ── Body text ── */
+    p { margin-bottom: 1rem; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    strong { color: var(--text); font-weight: 600; }
+
+    /* ── CTA button row ── */
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .cta p { margin: 0; }
+
+    .cta p a {
+      display: inline-block;
+      padding: 0.55rem 1.3rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.925rem;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
+    }
+
+    .cta p:first-child a {
+      background: var(--accent);
+      color: #0d1117;
+    }
+
+    .cta p:first-child a:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .cta p:not(:first-child) a {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .cta p:not(:first-child) a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ── Lists ── */
+    ul, ol {
+      margin: 0.5rem 0 1.25rem 1.4rem;
+    }
+
+    li { margin-bottom: 0.45rem; }
+    li p { margin-bottom: 0.25rem; }
+
+    /* ── Tables ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.25rem 0;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th {
+      background: var(--surface-2);
+      padding: 0.65rem 1rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: rgba(88, 166, 255, 0.04); }
+
+    /* ── Code ── */
+    code {
+      font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 0.875em;
+      background: var(--surface-2);
+      color: #e06c75;
+      padding: 0.15em 0.45em;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    pre {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      overflow-x: auto;
+      margin: 1.25rem 0;
+    }
+
+    pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--text);
+      font-size: 0.875rem;
+    }
+
+    /* ── Images ── */
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin: 1.25rem 0;
+      display: block;
+      border: 1px solid var(--border);
+    }
+
+    img[src*="shields.io"],
+    img[src*="img.shields.io"],
+    img[src*="ci.appveyor.com"] {
+      display: inline;
+      margin: 0 0.2rem 0 0;
+      border: none;
+      border-radius: 3px;
+      vertical-align: middle;
+    }
+
+    /* ── Blockquote ── */
+    blockquote {
+      border-left: 3px solid var(--accent);
+      margin: 1.25rem 0;
+      padding: 0.75rem 1.25rem;
+      background: var(--surface);
+      border-radius: 0 8px 8px 0;
+      color: var(--text-muted);
+    }
+
+    blockquote p { margin-bottom: 0; }
+
+    /* ── Horizontal rule ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+
+    /* ── Gallery ── */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+
+    .gallery-item {
+      position: relative;
+      display: block;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: zoom-in;
+      transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+      user-select: none;
+    }
+
+    .gallery-item:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+      margin: 0;
+      border: none;
+      border-radius: 0;
+      transition: filter 0.2s;
+    }
+
+    .gallery-item:hover img { filter: brightness(1.08); }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.5rem 0.65rem;
+      background: linear-gradient(transparent, rgba(13, 17, 23, 0.88));
+      color: var(--text);
+      font-size: 0.78rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+
+    .gallery-item:hover .gallery-caption { opacity: 1; }
+
+    .gallery-item.video-thumb img { filter: brightness(0.62); }
+    .gallery-item.video-thumb:hover img { filter: brightness(0.72); }
+
+    .gallery-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(88, 166, 255, 0.88);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      color: #0d1117;
+      pointer-events: none;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
+      transition: transform 0.15s, background 0.15s;
+    }
+
+    .gallery-item.video-thumb:hover .gallery-play {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: var(--accent-hover);
+    }
+
+    /* ── Lightbox ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.94);
+      z-index: 9000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      cursor: zoom-out;
+    }
+
+    #lightbox.open { display: flex; }
+
+    #lightbox img {
+      max-width: calc(100vw - 3rem);
+      max-height: calc(100vh - 3rem);
+      width: auto;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      object-fit: contain;
+      margin: 0;
+      cursor: default;
+    }
+
+    #lightbox video {
+      max-width: calc(100vw - 3rem);
+      max-height: calc(100vh - 3rem);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #000;
+      margin: 0;
+      cursor: default;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 1rem;
+      right: 1.25rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      z-index: 9001;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .lightbox-close:hover {
+      color: var(--text);
+      background: var(--surface);
+    }
+
+    /* ── Guide step cards ── */
+    .guide-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .guide-card {
+      display: block;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      text-decoration: none !important;
+      color: var(--text);
+      transition: border-color 0.15s, background 0.15s, transform 0.12s, box-shadow 0.15s;
+    }
+
+    .guide-card:hover {
+      border-color: var(--accent);
+      background: var(--surface-2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.32);
+      text-decoration: none !important;
+    }
+
+    .guide-card-step {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .guide-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+      color: var(--text);
+    }
+
+    .guide-card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.25rem; margin-top: 2.5rem; }
+      main { padding: 2rem 1rem 3.5rem; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 0.75rem; }
+      table { font-size: 0.82rem; }
+      th, td { padding: 0.5rem 0.6rem; }
+      .gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+      .guide-cards { grid-template-columns: 1fr; }
+      .hero-img { max-height: 240px; }
+      #lightbox img,
+      #lightbox video { max-width: 100vw; max-height: 100vh; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="nav-brand" href="./"><img src="assets/RackEnclosure-UpmixProtoUI.jpeg" alt="">Raspberry123DSI</a>
+    <div class="nav-links">
+      <a href="https://github.com/ChristianAhrens/Raspberry123DSI">GitHub</a>
+      <a href="docs/" class="btn-docs">Docs</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<h1 id="raspberry123dsi">Raspberry123DSI</h1>
+<p>A Raspberry Pi 5-based self-build rack enclosure system running three
+audio applications (Mema, Mema.Mo, Mema.Re) in a tiled kiosk mode on a
+12.3” DSI touchscreen. This repository provides the reference
+documentation, configuration files, and laser-cut enclosure vector
+graphics needed to build and configure the system.</p>
+<p><img class="hero-img" src="assets/RackEnclosure-InStudioRack.jpeg" alt="Raspberry123DSI installed in studio rack"></p>
+<div class="cta">
+<p><a href="docs/">Build Guide</a></p>
+<p><a href="https://github.com/ChristianAhrens/Raspberry123DSI">GitHub
+Repository</a></p>
+<p><a href="assets/">Enclosure Files</a></p>
+</div>
+<hr />
+<h2 id="gallery">Gallery</h2>
+<div class="gallery">
+<div class="gallery-item"
+data-src="assets/RackEnclosure-UpmixProtoUI.jpeg"
+onclick="openLightbox(this)">
+<p><img src="assets/RackEnclosure-UpmixProtoUI.jpeg" alt="Prototype UI on screen">
+<span class="gallery-caption">Prototype UI on screen</span></p>
+</div>
+<div class="gallery-item"
+data-src="assets/RackEnclosure-InStudioRack.jpeg"
+onclick="openLightbox(this)">
+<p><img src="assets/RackEnclosure-InStudioRack.jpeg" alt="Installed in studio rack">
+<span class="gallery-caption">Installed in studio rack</span></p>
+</div>
+<div class="gallery-item" data-src="assets/RackEnclosure-PaintJob.jpeg"
+onclick="openLightbox(this)">
+<p><img src="assets/RackEnclosure-PaintJob.jpeg" alt="Paint job — finished enclosure">
+<span class="gallery-caption">Paint job</span></p>
+</div>
+<div class="gallery-item" data-src="assets/RackEnclosure-Backpanel.jpeg"
+onclick="openLightbox(this)">
+<p><img src="assets/RackEnclosure-Backpanel.jpeg" alt="Back panel view">
+<span class="gallery-caption">Back panel</span></p>
+</div>
+<div class="gallery-item video-thumb"
+data-src="assets/RackEnclosure-BootupUpmixProto.mp4" data-type="video"
+onclick="openLightbox(this)">
+<p><img src="assets/RackEnclosure-UpmixProtoUI.jpeg" alt="Boot-up video">
+<span class="gallery-play">▶</span> <span
+class="gallery-caption">Boot-up video</span></p>
+</div>
+</div>
+<h2 id="system-architecture">System Architecture</h2>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│  d&amp;b Soundscape DS100 (network)                              │
+│         ↕ OCA/OCP.1 protocol                                 │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │  Raspberry Pi 5                                        │  │
+│  │  ┌─────────────────────────────────────────────────┐  │  │
+│  │  │  Raspberry Pi OS (64-bit, Debian Trixie)         │  │  │
+│  │  │  ┌───────────────────────────────────────────┐  │  │  │
+│  │  │  │  Sway (Wayland compositor)                 │  │  │  │
+│  │  │  │  ┌──────────┬──────────┬───────────────┐  │  │  │  │
+│  │  │  │  │ Mema.Mo  │  Umsci   │  Mema.Re      │  │  │  │  │
+│  │  │  │  │  25%     │   55%    │    20%        │  │  │  │  │
+│  │  │  │  └──────────┴──────────┴───────────────┘  │  │  │  │
+│  │  │  │  ALSA → RME Dante (16×16, 48kHz/32-bit)   │  │  │  │
+│  │  │  └───────────────────────────────────────────┘  │  │  │
+│  │  └─────────────────────────────────────────────────┘  │  │
+│  └───────────────────────────────────────────────────────┘  │
+│         ↕ DSI (720×1920, rotated 270°)                       │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │  12.3&quot; DSI Touchscreen (Waveshare)                     │  │
+│  └───────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘</code></pre>
+<h2 id="hardware">Hardware</h2>
+<p>The rack enclosure is a multi-layer laser-cut plywood assembly for
+professional audio integration:</p>
+<table>
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">Details</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Controller</strong></td>
+<td style="text-align: left;">Raspberry Pi 5 (64-bit Raspberry Pi OS,
+Debian Trixie)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Display</strong></td>
+<td style="text-align: left;">Waveshare 12.3” DSI touchscreen (720×1920,
+rotated 270°)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Audio interface</strong></td>
+<td style="text-align: left;">RME Digiface Dante (USB, 16×16,
+48kHz/32-bit) via ALSA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Enclosure</strong></td>
+<td style="text-align: left;">Laser-cut plywood (3 mm / 6 mm / 10 mm),
+~139 mm total depth</td>
+</tr>
+</tbody>
+</table>
+<p>Full SVG vector files for laser cutting are available in the <a
+href="assets/">assets/</a> directory.</p>
+<h2 id="software">Software</h2>
+<p>The system boots headlessly into a kiosk mode:</p>
+<ol type="1">
+<li><strong>Raspberry Pi OS</strong> boots with DRM/KMS display driver
+and rotated framebuffer console</li>
+<li><strong>Sway</strong> starts via <code>bash_login</code>, launching
+three audio applications tiled side-by-side</li>
+<li><strong>Mema.Mo</strong> (25%) — Network-level audio monitoring</li>
+<li><strong>Umsci</strong> (55%) — Spatial audio control surface for
+d&amp;b Soundscape DS100</li>
+<li><strong>Mema.Re</strong> (20%) — Remote control interface</li>
+</ol>
+<p>All configuration files are in the <a
+href="https://github.com/ChristianAhrens/Raspberry123DSI/tree/main/config">config/</a>
+directory.</p>
+<h2 id="getting-started">Getting Started</h2>
+<ol type="1">
+<li><strong>Build the enclosure</strong> — Download SVG files from
+<code>assets/</code>, send to a laser cutter</li>
+<li><strong>Prepare the SD card</strong> — Flash Raspberry Pi OS
+(64-bit) onto the SD card</li>
+<li><strong>Deploy configs</strong> — Copy files from
+<code>config/</code> to the appropriate locations on the Pi</li>
+<li><strong>Boot</strong> — The Pi automatically starts Sway and
+launches the three audio applications</li>
+</ol>
+<p>See the <a href="docs/">build guide</a> for detailed step-by-step
+instructions.</p>
+<h2 id="sibling-projects">Sibling Projects</h2>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Project</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a
+href="https://github.com/ChristianAhrens/Umsci"><strong>Umsci</strong></a></td>
+<td style="text-align: left;">Spatial audio control surface for d&amp;b
+Soundscape DS100. macOS, Windows, iOS/iPadOS.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a
+href="https://github.com/ChristianAhrens/Mema"><strong>Mema</strong></a></td>
+<td style="text-align: left;">Family of audio matrix routing
+applications (Mema, Mema.Mo, Mema.Re). macOS, Windows, Linux,
+iOS/iPadOS.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Open source — use what is provided here at your own
+risk.</em></p>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="https://github.com/ChristianAhrens/Raspberry123DSI">GitHub Repository</a>
+      <a href="docs/">Documentation</a>
+      <a href="https://github.com/ChristianAhrens/Raspberry123DSI/blob/main/README.md">Full README</a>
+    </div>
+    <p>Open source &mdash; use what is provided here at your own risk.</p>
+  </div>
+</footer>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="event.stopPropagation(); closeLightbox()">&#x2715;</span>
+  <img id="lb-img" src="" alt="" onclick="event.stopPropagation()">
+  <video id="lb-video" controls onclick="event.stopPropagation()">
+    <source id="lb-video-src" src="" type="video/mp4">
+  </video>
+</div>
+
+<script>
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lb-img');
+  var lbVideo = document.getElementById('lb-video');
+  var lbSrc = document.getElementById('lb-video-src');
+
+  lbImg.style.display = 'none';
+  lbVideo.style.display = 'none';
+
+  function openLightbox(el) {
+    var src = el.getAttribute('data-src');
+    var isVideo = el.getAttribute('data-type') === 'video';
+    if (isVideo) {
+      lbImg.style.display = 'none';
+      lbSrc.src = src;
+      lbVideo.load();
+      lbVideo.style.display = 'block';
+      setTimeout(function() { lbVideo.play(); }, 50);
+    } else {
+      lbVideo.pause();
+      lbVideo.style.display = 'none';
+      lbImg.src = src;
+      lbImg.style.display = 'block';
+    }
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('open');
+    lbVideo.pause();
+    lbSrc.src = '';
+    lbImg.src = '';
+    lbImg.style.display = 'none';
+    lbVideo.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+</body>
+</html>

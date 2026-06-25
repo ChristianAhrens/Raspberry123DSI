@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="594mm"
+   height="420mm"
+   viewBox="0 0 594 420"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   sodipodi:docname="08_All_Layers_Inkscape.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.99743647"
+     inkscape:cx="1153.4569"
+     inkscape:cy="410.55246"
+     inkscape:window-width="2880"
+     inkscape:window-height="1562"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <rect
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.240543;stroke-opacity:1"
+       id="rect11"
+       width="399.75946"
+       height="177.55946"
+       x="91.604973"
+       y="50.08968"
+       inkscape:label="Backplate outline" />
+    <g
+       id="g12"
+       inkscape:label="Sub-D PowerCon"
+       transform="translate(-1.3461837,-0.25641594)"
+       style="display:inline">
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12"
+         cx="139.20767"
+         cy="177.83223"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D top screwhole" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.181656;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path11"
+         cx="129.75421"
+         cy="189.67567"
+         rx="11.709171"
+         ry="11.709172"
+         inkscape:label="Sub-D cutout" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12-8"
+         cx="120.34563"
+         cy="201.57826"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D bottom screwhole" />
+    </g>
+    <g
+       id="g12-2"
+       inkscape:label="Sub-D USB 1"
+       transform="translate(32.413539,-0.23122001)"
+       style="display:inline">
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12-1"
+         cx="139.20767"
+         cy="177.83223"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D top screwhole" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.181656;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path11-6"
+         cx="129.75421"
+         cy="189.67567"
+         rx="11.709171"
+         ry="11.709172"
+         inkscape:label="Sub-D cutout" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12-8-8"
+         cx="120.34563"
+         cy="201.57826"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D bottom screwhole" />
+    </g>
+    <g
+       id="g12-2-0"
+       inkscape:label="Sub-D USB 2"
+       transform="translate(66.186292,-0.24259687)"
+       style="display:inline">
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12-1-4"
+         cx="139.20767"
+         cy="177.83223"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D top screwhole" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.181656;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path11-6-9"
+         cx="129.75421"
+         cy="189.67567"
+         rx="11.709171"
+         ry="11.709172"
+         inkscape:label="Sub-D cutout" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12-8-8-9"
+         cx="120.34563"
+         cy="201.57826"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D bottom screwhole" />
+    </g>
+    <g
+       id="g12-2-9"
+       inkscape:label="Sub-D Ethernet 1"
+       transform="translate(99.942561,-0.23183123)"
+       style="display:inline">
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12-1-0"
+         cx="139.20767"
+         cy="177.83223"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D top screwhole" />
+      <path
+         id="rect12"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.205341;stroke-dasharray:none"
+         d="m 223.79047,175.62391 v 5.81256 h -2.15955 v 17.79478 h 4.14755 v 1.92185 h 7.83621 v -1.92185 h 4.14755 v -17.79478 h -2.15904 v -5.81256 z"
+         inkscape:label="Ethernet cutout"
+         transform="translate(-99.942561,0.23183123)" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="path12-8-8-8"
+         cx="120.34563"
+         cy="201.57826"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D bottom screwhole" />
+    </g>
+    <g
+       id="g18"
+       inkscape:label="Sub-D Ethernet 2"
+       transform="translate(133.69883,-0.26140276)"
+       style="display:inline">
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="ellipse16"
+         cx="139.20767"
+         cy="177.83223"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D top screwhole" />
+      <path
+         id="path16"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.205341;stroke-dasharray:none"
+         d="m 223.79047,175.62391 v 5.81256 h -2.15955 v 17.79478 h 4.14755 v 1.92185 h 7.83621 v -1.92185 h 4.14755 v -17.79478 h -2.15904 v -5.81256 z"
+         inkscape:label="Ethernet cutout"
+         transform="translate(-99.942561,0.23183123)" />
+      <ellipse
+         style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-dasharray:none;stroke-opacity:1"
+         id="ellipse17"
+         cx="120.34563"
+         cy="201.57826"
+         rx="1.3626764"
+         ry="1.3626765"
+         inkscape:label="Sub-D bottom screwhole" />
+    </g>
+    <g
+       id="g16"
+       inkscape:label="Fan holes"
+       style="display:inline">
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8"
+         cx="335.71667"
+         cy="86.571556"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-1"
+         cx="440.29791"
+         cy="86.791008"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-8"
+         cx="335.73416"
+         cy="191.41319"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0"
+         cx="440.56775"
+         cy="191.41852"
+         rx="1.211386"
+         ry="1.2113858" />
+    </g>
+    <g
+       id="g15"
+       inkscape:label="Fan vents"
+       style="display:inline">
+      <path
+         id="path14"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none"
+         inkscape:label="4"
+         d="m 390.3617,84.358158 v 4.86792 a 49.895153,49.895153 0 0 1 47.57798,47.260682 h 4.96559 A 54.884666,54.884666 0 0 0 390.3617,84.358158 Z m -4.87929,0.130742 a 54.884666,54.884666 0 0 0 -52.08622,51.99786 h 5.1418 a 49.895153,49.895153 0 0 1 46.94442,-47.210556 z m -52.12756,56.82237 a 54.884666,54.884666 0 0 0 52.12756,52.57405 v -5.25291 a 49.895153,49.895153 0 0 1 -46.9532,-47.32114 z m 104.59361,0 a 49.895153,49.895153 0 0 1 -47.58676,47.37127 v 5.22655 A 54.884666,54.884666 0 0 0 442.82,141.31127 Z" />
+      <path
+         id="path14-5-5"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none"
+         inkscape:label="3"
+         d="m 390.3617,94.411292 v 5.030183 a 39.916122,39.916122 0 0 1 37.49384,37.045285 h 5.0214 A 44.905636,44.905636 0 0 0 390.3617,94.411292 Z m -4.87929,0.03462 a 44.905636,44.905636 0 0 0 -42.03464,42.040848 h 4.90616 a 39.916122,39.916122 0 0 1 37.12848,-36.91558 z m -42.07185,46.865358 a 44.905636,44.905636 0 0 0 42.07185,42.56226 v -4.87412 a 39.916122,39.916122 0 0 1 -37.18894,-37.68814 z m 84.39589,0 a 39.916122,39.916122 0 0 1 -37.44475,37.70829 v 4.99143 a 44.905636,44.905636 0 0 0 42.65321,-42.69972 z" />
+      <path
+         id="path14-5-5-8-8"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none"
+         inkscape:label="2"
+         d="m 390.3617,104.58328 v 4.92476 a 29.93709,29.93709 0 0 1 27.42158,26.97872 h 4.92994 A 34.926605,34.926605 0 0 0 390.3617,104.58328 Z m -4.87929,0.01 a 34.926605,34.926605 0 0 0 -32.21405,31.89366 h 5.00951 a 29.93709,29.93709 0 0 1 27.20454,-26.88621 z m -32.2771,36.71817 a 34.926605,34.926605 0 0 0 32.2771,32.7763 v -5.00797 a 29.93709,29.93709 0 0 1 -27.27378,-27.76833 z m 64.56764,0 a 29.93709,29.93709 0 0 1 -27.41125,27.77918 v 5.00693 a 34.926605,34.926605 0 0 0 32.41456,-32.78611 z" />
+      <path
+         id="path14-5-5-8-8-2-6"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none"
+         inkscape:label="1"
+         d="m 390.3617,114.17236 v 5.30045 a 19.958059,19.958059 0 0 1 17.38292,17.01395 h 5.07669 a 24.947575,24.947575 0 0 0 -22.45961,-22.3144 z m -4.87929,0.0181 a 24.947575,24.947575 0 0 0 -22.20381,22.29631 h 4.97437 a 19.958059,19.958059 0 0 1 17.22944,-16.96227 z m -22.21156,27.12082 a 24.947575,24.947575 0 0 0 22.21156,22.40742 v -4.67258 a 19.958059,19.958059 0 0 1 -17.2899,-17.73484 z m 44.51873,0 a 19.958059,19.958059 0 0 1 -17.42788,17.74569 v 4.73459 a 24.947575,24.947575 0 0 0 22.52266,-22.48028 z" />
+    </g>
+    <g
+       id="g17"
+       inkscape:label="Vents"
+       style="display:inline">
+      <path
+         id="rect14"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 115.38469,65.01722 v 47.49581 h 4.81883 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81883 v -47.49633 z" />
+      <path
+         id="rect14-6"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 125.02183,65.01722 v 47.49581 h 4.81882 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81882 v -47.49633 z" />
+      <path
+         id="rect14-4"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         inkscape:label="rect14-4"
+         d="m 134.65896,65.01722 v 47.49581 h 4.81831 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81831 v -47.49633 z" />
+      <path
+         id="rect14-8"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 144.2961,65.01722 v 47.49581 h 4.81831 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81831 v -47.49633 z" />
+      <path
+         id="rect14-7"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 153.93324,65.01722 v 47.49581 h 4.81831 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81831 v -47.49633 z" />
+      <path
+         id="rect14-9"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 163.56986,65.01722 v 47.49581 h 4.81883 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81883 v -47.49633 z" />
+      <path
+         id="rect14-20"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 173.207,65.01722 v 47.49581 h 4.81883 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81883 v -47.49633 z" />
+      <path
+         id="rect14-25"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 182.84414,65.01722 v 47.49581 h 4.81882 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81882 v -47.49633 z" />
+      <path
+         id="rect14-10"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 192.48127,65.01722 v 47.49581 h 4.81831 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81831 v -47.49633 z" />
+      <path
+         id="rect14-62"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 202.11841,65.01722 v 47.49581 h 4.81831 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81831 v -47.49633 z" />
+      <path
+         id="rect14-63"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 211.75555,65.01722 v 47.49581 h 4.81831 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81831 v -47.49633 z" />
+      <path
+         id="rect14-46"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 221.39269,65.01722 v 47.49581 H 226.211 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81831 v -47.49633 z" />
+      <path
+         id="rect14-75"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 231.02931,65.01722 v 47.49581 h 4.81883 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81883 v -47.49633 z" />
+      <path
+         id="rect14-48"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 240.66645,65.01722 v 47.49581 h 4.81882 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81882 v -47.49633 z" />
+      <path
+         id="rect14-45"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 250.30358,65.01722 v 47.49581 h 4.81832 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81832 v -47.49633 z" />
+      <path
+         id="rect14-37"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 259.94072,65.01722 v 47.49581 h 4.81831 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81831 v -47.49633 z" />
+      <path
+         id="rect14-585"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.181479;stroke-dasharray:none"
+         d="m 269.57786,65.01722 v 47.49581 h 4.81831 V 65.01722 Z m 0,52.42884 v 47.49633 h 4.81831 v -47.49633 z" />
+    </g>
+    <g
+       id="g19"
+       inkscape:label="Backplate holes">
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7"
+         cx="483.97556"
+         cy="57.493874"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-0"
+         cx="483.97556"
+         cy="220.24495"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-9"
+         cx="291.48471"
+         cy="57.493874"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-3"
+         cx="291.48471"
+         cy="220.24495"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-8"
+         cx="98.993866"
+         cy="220.24495"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-1"
+         cx="98.993866"
+         cy="57.493874"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-80"
+         cx="98.993866"
+         cy="138.89999"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-32"
+         cx="483.97556"
+         cy="138.86942"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-13"
+         cx="291.48471"
+         cy="138.86942"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-13-3"
+         cx="387.94284"
+         cy="57.493874"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-13-35"
+         cx="388.10989"
+         cy="220.24495"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-13-5"
+         cx="196.89116"
+         cy="220.24495"
+         rx="1.211386"
+         ry="1.2113858" />
+      <ellipse
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.2;stroke-dasharray:none;stroke-opacity:1"
+         id="path13-87-8-0-7-13-9"
+         cx="195.02658"
+         cy="57.508461"
+         rx="1.211386"
+         ry="1.2113858" />
+    </g>
+  </g>
+</svg>
